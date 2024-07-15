@@ -1,0 +1,10 @@
+<div class="form">
+<h2>New Tasks</h2>
+
+<form  [formGroup]="newtasks" (ngSubmit)="createOneTasks()">
+
+    <input formControlName="description" placeholder="Ingrese su Tareas">
+    <button>Send</button>
+
+</form>
+</div>

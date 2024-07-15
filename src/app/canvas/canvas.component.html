@@ -1,37 +1,77 @@
 <div class="container"
 >
-    <div class="container_tasks">
+    <div class="container_post">
         <h3>Tareas</h3>
-        <div class="tarea_text">
-            <div class="example-box" cdkDrag>
-                Drag me around
+        <div 
+        cdkDropList
+        #todoList="cdkDropList"
+        id="cdk-drop-list-0"
+        [cdkDropListData]="todo"
+        [cdkDropListConnectedTo]="[processlist]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        @if (todo.length === 0) {
+            <div class="example-box placeholder"></div>
+        }
+        @for (item of todo; track item) {
+            <div class="example-box" cdkDrag><p>{{item.description}}</p>
+                
+            <button (click)="deleteTasks(item.id)">delete</button>
+            <button (click)="openMode(item.id)">Edit</button>
+        </div>
+        }
+        </div>
+    </div>
+    
+    <div class="container_post">
+        <h3>En Proceso</h3>
+        <div class="proceso_text"
+        cdkDropList
+        #processlist ="cdkDropList"
+        id="cdk-drop-list-1"
+        [cdkDropListData]="process"
+        [cdkDropListConnectedTo]="[todoList, doneList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        @if (process.length === 0) {
+            <div class="example-box placeholder"></div>
+        }
+        @for (item of process; track item) {
+            <div class="example-box" cdkDrag><p>{{item.description}}</p>
+                <button (click)="deleteTasks(item.id)">delete</button>
+                <button (click)="openMode(item.id)">Edit</button>
             </div>
+        }
+        </div>
+        
+    </div>
+
+    <div class="container_post">
+        <h3>Finalizado</h3>
+        <div 
+        cdkDropList
+        #doneList="cdkDropList"
+        id="cdk-drop-list-2"
+        [cdkDropListData]="done"
+        [cdkDropListConnectedTo]="[processlist]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        @if (done.length === 0) {
+            <div class="example-box placeholder"></div>
+        }
+        @for (item of done; track item) {
+            <div class="example-box" cdkDrag><p>{{item.description}}</p>
+                <button (click)="deleteTasks(item.id)">delete</button>
+                <button (click)="openMode(item.id)">Edit</button>
+            </div>
+        }
         </div>
     </div>
 
-    <div>
-        <div class="container_InProcces">
-            <h3>En Proceso</h3>
-            <div class="proceso_text">
-                <div class="example-box" cdkDrag>
-                    Drag me around
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div>
-        <div class="conatiner_finish">
-            <h3>Finalizado</h3>
-            <div class="proceso_text">
-                <div class="example-box" cdkDrag>
-                    Drag me around
-                </div>
-            </div>
-            
-        </div>
-    </div>
 
 
 </div>
+
+
+
 
