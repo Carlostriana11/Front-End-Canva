@@ -27,8 +27,10 @@
               }
             ],
             "styles": [
+              "src/styles.css",
               "@angular/material/prebuilt-themes/azure-blue.css",
-              "src/styles.css"
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css"
+              
             ],
             "scripts": []
           },
@@ -88,8 +90,9 @@
               }
             ],
             "styles": [
+              "src/styles.css",
               "@angular/material/prebuilt-themes/azure-blue.css",
-              "src/styles.css"
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css"
             ],
             "scripts": []
           }

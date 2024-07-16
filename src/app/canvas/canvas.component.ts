@@ -5,6 +5,7 @@ import { CanvasServicesService } from '../services/canvas.services.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateCanvaComponent } from '../update-canva/update-canva.component';
 import { task } from '../interfaces/canva.interfaces';
+import { config } from 'rxjs';
 
 
 @Component({
@@ -70,11 +71,15 @@ export class CanvasComponent {
   }
 
   deleteTasks(id: string){
-    console.log(id)
+    const confirmed = confirm('estas seguro que deseas eliminar esta tarea ')
+    if(confirmed){
+      console.log(id)
     this.canvaServices.deleteTasks(id).subscribe(data => {
       console.log(data)
       location.reload();
     })
+    }
+    
   }
   openMode(id: string):void{
     this._matDiaLog.open(UpdateCanvaComponent, {
